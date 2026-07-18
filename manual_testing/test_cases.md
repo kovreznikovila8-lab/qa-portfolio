@@ -27,7 +27,7 @@
 Ожидаемый результат: появляется сообщение "Epic sadface: Password is required"
 Фактический результат: появляется сообщение "Epic sadface: Password is required"
 
-## ТС-004: Проверка сообщения при пустом поле "Username"
+## TC-004: Проверка сообщения при пустом поле "Username" 
 Предусловия: страница логина открыта (https://www.saucedemo.com/).
 Шаги: 
 1. Оставить поле "Username" пустым 
@@ -36,7 +36,7 @@
 Ожидаемый результат: появляется сообщение "Epic sadface: Username is required"
 Фактический результат: появляется сообщение "Epic sadface: Username is required"
 
-## ТС-005: Проверка сообщения при неправильном "пароле" 
+## TC-005: Проверка сообщения при неправильном "Password"
 Предусловия: страница логина открыта (https://www.saucedemo.com/).
 Шаги:
 1. Ввести "standard_user" в поле "Username".
@@ -44,7 +44,7 @@
 3. Нажать кнопку "Login".
 Ожидаемый результат: появляется сообщение "Epic sadface: Username and password do not match any user in this service"
 Фактический результат: появляется сообщение "Epic sadface: Username and password do not match any user in this service"
-## ТС-006: Проверка сообщения при неправильном "Username"
+## TC-006: Проверка сообщения при неправильном "Username"
 Предусловия: страница логина открыта (https://www.saucedemo.com/).
 Шаги:
 1. Ввести "котик-бегемотик" в поле "Username".
@@ -52,7 +52,7 @@
 3. Нажать кнопку "Login".
 Ожидаемый результат: появляется сообщение "Epic sadface: Username and password do not match any user in this service"
 Фактический результат: появляется сообщение "Epic sadface: Username and password do not match any user in this service"
-## ТС-007: Проверка сообщения при пустых полях "Username" и "Password"
+## TC-007: Проверка сообщения при пустых полях "Username" и "Password"
 Предусловия: страница логина открыта (https://www.saucedemo.com/).
 Шаги:
 1. Оставить поле "Username" пустым 
@@ -60,7 +60,7 @@
 3. Нажать кнопку "Login".
 Ожидаемый результат: появляется сообщение "Epic sadface: Username is required"
 Фактический результат: появляется сообщение "Epic sadface: Username is required"
-## ТС-008: Проверка сообщения при неправильном "Username" и "Password"
+## TC-008: Проверка сообщения при неправильном "Username" и "Password"
 Предусловия: страница логина открыта (https://www.saucedemo.com/).
 Шаги:
 1. Ввести "салют всем" в поле "Username".

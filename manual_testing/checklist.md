@@ -5,15 +5,15 @@
  Поле "Password" принимает ввод и скрывает символы (точки)
  При оставлении поля "Password" пустым появляется сообщение об ошибке "Epic sadface: Password is required"
  При оставлении поля "Username" пустым появляется сообщение об ошибке "Epic sadface: Username is required"
- При неправильном вводе Л"Username" и "Password" появляется сообщение об ошибке "Epic sadface: Username and password do not match any user in this service"
- При вводе locked_out_user появляется сообщение об ошибке "Epic sadface: Sorry, this user has been locked out"
+ При неправильном вводе "Username" и "Password" появляется сообщение об ошибке "Epic sadface: Username and password do not match any user in this service"
+ При вводе "locked_out_user" появляется сообщение об ошибке "Epic sadface: Sorry, this user has been locked out"
  При заполнении корректных данных происходит переход на страницу https://www.saucedemo.com/inventory.html
 
 ## Страница товаров (Inventory)
 Отображается список товаров в виде карточек
 У каждого товара есть описание, цена и кнопка "Add to cart"
 У каждой карточки при наведении на картинку или название товара они кликабельны, и переносят на отдельную страницу с выбранным товаром
-Кнопка "Back to products" на странице с выбранным товаром, ввозвращает нас обратно ко всему каталогу 
+Кнопка "Back to products" на странице с выбранным товаром возвращает нас обратно ко всему каталогу
 При нажатии кнопки "Add to cart" она добавляет товар в корзину "справа в углу значок корзина, цифра увеличивается на 1" и меняет свое название на "Remove"
 При нажатии кнопки "Remove" она убирает товар из корзины "справа в углу значок корзина, цифра уменьшается на 1" и меняет свое название на "Add to cart"
 Если убрать все товары из корзины, то корзина будет пустой (не будет красных цифр)
@@ -38,7 +38,7 @@
 При оставлении пустых полей "First Name", "Zip/Postal code" появляется сообщение об ошибке "Error: First Name is required" 
 При оставлении пустого поля "Zip/Postal code" появляется сообщение об ошибке "Error: Postal Code is required"
 При оставлении пустого поля "First Name" появляется сообщение об ошибке "Error: First Name is required"
-При оставлении пустого поля ""Last Name" появляется сообщение об ошибке "Error: Last Name is required" 
+При оставлении пустого поля "Last Name" появляется сообщение об ошибке "Error: Last Name is required" 
 При заполнении всех полей "First Name", "Last Name" и "Zip/Postal code" и нажатии на кнопку "Continue" нас перебрасывает на страницу https://www.saucedemo.com/checkout-step-two.html 
 На странице "Оформление заказа" информация о наших товарах, названия добавленных товаров кликабельны и переносят нас на конкретный товар
 Кнопка "Cancel" возвращает нас обратно на страницу "Каталога с товарами"
