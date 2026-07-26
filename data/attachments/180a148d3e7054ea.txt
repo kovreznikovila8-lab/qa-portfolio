@@ -1,0 +1,1 @@
+✅ test_checkout_empty_fields пройден

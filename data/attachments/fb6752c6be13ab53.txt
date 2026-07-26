@@ -1,0 +1,1 @@
+✅ test_login_wrong_password пройден
