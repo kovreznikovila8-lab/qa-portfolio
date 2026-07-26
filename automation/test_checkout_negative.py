@@ -18,13 +18,16 @@ def test_checkout_empty_fields(driver):
     driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
     time.sleep(2)
     WebDriverWait(driver, 30).until(
-        EC.visibility_of_element_located((By.XPATH, "//span[text()='Your Cart']"))
+        EC.url_contains("cart.html")
     )
     WebDriverWait(driver, 30).until(
         EC.presence_of_element_located((By.CLASS_NAME, "cart_item"))
     )
     driver.find_element(By.ID, "checkout").click()
-    WebDriverWait(driver, 20).until(
+    WebDriverWait(driver, 30).until(
+        EC.url_contains("checkout-step-one")
+    )
+    WebDriverWait(driver, 30).until(
         EC.visibility_of_element_located((By.ID, "first-name"))
     )
     driver.find_element(By.ID, "continue").click()

@@ -32,16 +32,15 @@ def test_remove_from_cart(driver):
     )
     driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
     time.sleep(2)
-    # Ждём заголовок "Your Cart"
+    # Ждём, пока URL станет /cart.html
     WebDriverWait(driver, 30).until(
-        EC.visibility_of_element_located((By.XPATH, "//span[text()='Your Cart']"))
+        EC.url_contains("cart.html")
     )
-    # Ждём, что хотя бы один товар есть в корзине
+    # Ждём появления элемента корзины
     WebDriverWait(driver, 30).until(
         EC.presence_of_element_located((By.CLASS_NAME, "cart_item"))
     )
     driver.find_element(By.XPATH, "//button[text()='Remove']").click()
-    # Ждём, пока бейдж исчезнет
     WebDriverWait(driver, 20).until(
         EC.invisibility_of_element_located((By.CLASS_NAME, "shopping_cart_badge"))
     )
