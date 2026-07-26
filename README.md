@@ -7,3 +7,4 @@
 - SQL-запросы
 - Автоматизация (Python + Selenium)
 - Мобильное тестирование
+📊 [Посмотреть Allure-отчёт](https://kovreznikovila8-lab.github.io/qa-portfolio/)
