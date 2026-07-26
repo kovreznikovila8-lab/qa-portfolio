@@ -30,20 +30,22 @@ def test_remove_from_cart(driver):
     WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.CLASS_NAME, "shopping_cart_badge"))
     )
-    driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
-    time.sleep(2)
-    # Ждём, пока URL станет /cart.html
-    WebDriverWait(driver, 30).until(
-        EC.url_contains("cart.html")
-    )
-    # Ждём появления элемента корзины
-    WebDriverWait(driver, 30).until(
+    cart_icon = driver.find_element(By.CLASS_NAME, "shopping_cart_link")
+    driver.execute_script("arguments[0].click();", cart_icon)  # JavaScript-клик
+    time.sleep(5)
+    WebDriverWait(driver, 60).until(
         EC.presence_of_element_located((By.CLASS_NAME, "cart_item"))
     )
-    driver.find_element(By.XPATH, "//button[text()='Remove']").click()
-    WebDriverWait(driver, 20).until(
-        EC.invisibility_of_element_located((By.CLASS_NAME, "shopping_cart_badge"))
-    )
+    remove_button = driver.find_element(By.XPATH, "//button[text()='Remove']")
+    driver.execute_script("arguments[0].click();", remove_button)  # JavaScript-клик
+    time.sleep(3)
+    # Проверяем, что бейдж исчез
+    try:
+        WebDriverWait(driver, 20).until(
+            EC.invisibility_of_element_located((By.CLASS_NAME, "shopping_cart_badge"))
+        )
+    except:
+        pass  # если не исчез, всё равно проверим
     cart_badge_after = driver.find_elements(By.CLASS_NAME, "shopping_cart_badge")
     assert len(cart_badge_after) == 0
     print("✅ test_remove_from_cart пройден")

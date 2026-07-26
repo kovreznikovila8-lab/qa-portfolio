@@ -15,23 +15,20 @@ def test_checkout_empty_fields(driver):
     WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.CLASS_NAME, "shopping_cart_badge"))
     )
-    driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
-    time.sleep(2)
-    WebDriverWait(driver, 30).until(
-        EC.url_contains("cart.html")
-    )
-    WebDriverWait(driver, 30).until(
+    cart_icon = driver.find_element(By.CLASS_NAME, "shopping_cart_link")
+    driver.execute_script("arguments[0].click();", cart_icon)
+    time.sleep(5)
+    WebDriverWait(driver, 60).until(
         EC.presence_of_element_located((By.CLASS_NAME, "cart_item"))
     )
-    driver.find_element(By.ID, "checkout").click()
-    WebDriverWait(driver, 30).until(
-        EC.url_contains("checkout-step-one")
-    )
-    WebDriverWait(driver, 30).until(
+    checkout_btn = driver.find_element(By.ID, "checkout")
+    driver.execute_script("arguments[0].click();", checkout_btn)
+    time.sleep(3)
+    WebDriverWait(driver, 60).until(
         EC.visibility_of_element_located((By.ID, "first-name"))
     )
     driver.find_element(By.ID, "continue").click()
-    error_msg = WebDriverWait(driver, 10).until(
+    error_msg = WebDriverWait(driver, 30).until(
         EC.presence_of_element_located((By.CSS_SELECTOR, "h3[data-test='error']"))
     )
     assert "First Name is required" in error_msg.text

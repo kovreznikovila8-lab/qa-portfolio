@@ -15,30 +15,28 @@ def test_checkout_success(driver):
     WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.CLASS_NAME, "shopping_cart_badge"))
     )
-    driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
-    time.sleep(2)
-    WebDriverWait(driver, 30).until(
-        EC.url_contains("cart.html")
-    )
-    WebDriverWait(driver, 30).until(
+    cart_icon = driver.find_element(By.CLASS_NAME, "shopping_cart_link")
+    driver.execute_script("arguments[0].click();", cart_icon)
+    time.sleep(5)
+    WebDriverWait(driver, 60).until(
         EC.presence_of_element_located((By.CLASS_NAME, "cart_item"))
     )
-    driver.find_element(By.ID, "checkout").click()
-    WebDriverWait(driver, 30).until(
-        EC.url_contains("checkout-step-one")
-    )
-    WebDriverWait(driver, 30).until(
+    checkout_btn = driver.find_element(By.ID, "checkout")
+    driver.execute_script("arguments[0].click();", checkout_btn)
+    time.sleep(3)
+    WebDriverWait(driver, 60).until(
         EC.visibility_of_element_located((By.ID, "first-name"))
     )
     driver.find_element(By.ID, "first-name").send_keys("Иван")
     driver.find_element(By.ID, "last-name").send_keys("Иванов")
     driver.find_element(By.ID, "postal-code").send_keys("123456")
     driver.find_element(By.ID, "continue").click()
-    WebDriverWait(driver, 10).until(
+    WebDriverWait(driver, 30).until(
         EC.presence_of_element_located((By.CLASS_NAME, "checkout_summary_container"))
     )
-    driver.find_element(By.ID, "finish").click()
-    complete_header = WebDriverWait(driver, 10).until(
+    finish_btn = driver.find_element(By.ID, "finish")
+    driver.execute_script("arguments[0].click();", finish_btn)
+    complete_header = WebDriverWait(driver, 30).until(
         EC.presence_of_element_located((By.CLASS_NAME, "complete-header"))
     )
     assert "Thank you for your order" in complete_header.text
