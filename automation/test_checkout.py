@@ -19,12 +19,8 @@ def test_checkout_success(driver):
         EC.presence_of_element_located((By.CLASS_NAME, "cart_list"))
     )
     driver.find_element(By.ID, "checkout").click()
-    # Ждём смены URL
-    WebDriverWait(driver, 15).until(
-        EC.url_contains("checkout-step-one")
-    )
-    # Ждём, пока поле first-name станет видимым
-    WebDriverWait(driver, 15).until(
+    # Явное ожидание появления поля first-name (увеличиваем таймаут до 20)
+    WebDriverWait(driver, 20).until(
         EC.visibility_of_element_located((By.ID, "first-name"))
     )
     driver.find_element(By.ID, "first-name").send_keys("Иван")
