@@ -34,6 +34,10 @@ def test_remove_from_cart(driver):
         EC.presence_of_element_located((By.CLASS_NAME, "cart_list"))
     )
     driver.find_element(By.XPATH, "//button[text()='Remove']").click()
+    # Ждём, пока бейдж исчезнет
+    WebDriverWait(driver, 10).until(
+        EC.invisibility_of_element_located((By.CLASS_NAME, "shopping_cart_badge"))
+    )
     cart_badge_after = driver.find_elements(By.CLASS_NAME, "shopping_cart_badge")
     assert len(cart_badge_after) == 0
     print("✅ test_remove_from_cart пройден")

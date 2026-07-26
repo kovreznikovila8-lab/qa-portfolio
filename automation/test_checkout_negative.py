@@ -19,9 +19,13 @@ def test_checkout_empty_fields(driver):
         EC.presence_of_element_located((By.CLASS_NAME, "cart_list"))
     )
     driver.find_element(By.ID, "checkout").click()
-    # Ждём загрузки страницы оформления
-    WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.ID, "first-name"))
+    # Ждём смены URL
+    WebDriverWait(driver, 15).until(
+        EC.url_contains("checkout-step-one")
+    )
+    # Ждём появления поля first-name
+    WebDriverWait(driver, 15).until(
+        EC.visibility_of_element_located((By.ID, "first-name"))
     )
     # Оставляем поля пустыми и нажимаем Continue
     driver.find_element(By.ID, "continue").click()
