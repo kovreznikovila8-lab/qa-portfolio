@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import time
 
 def test_checkout_success(driver):
     driver.get("https://www.saucedemo.com/")
@@ -15,11 +16,15 @@ def test_checkout_success(driver):
         EC.presence_of_element_located((By.CLASS_NAME, "shopping_cart_badge"))
     )
     driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
-    WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.CLASS_NAME, "cart_list"))
+    time.sleep(2)
+    # Ждём заголовок "Your Cart"
+    WebDriverWait(driver, 30).until(
+        EC.visibility_of_element_located((By.XPATH, "//span[text()='Your Cart']"))
+    )
+    WebDriverWait(driver, 30).until(
+        EC.presence_of_element_located((By.CLASS_NAME, "cart_item"))
     )
     driver.find_element(By.ID, "checkout").click()
-    # Явное ожидание появления поля first-name (увеличиваем таймаут до 20)
     WebDriverWait(driver, 20).until(
         EC.visibility_of_element_located((By.ID, "first-name"))
     )
