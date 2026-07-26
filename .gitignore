@@ -1,0 +1,10 @@
+cat >> .gitignore <<EOF
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Allure
+allure-results/
+automation/allure-results/
+EOF
