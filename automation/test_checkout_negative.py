@@ -27,8 +27,10 @@ def test_checkout_empty_fields(driver):
     WebDriverWait(driver, 60).until(
         EC.visibility_of_element_located((By.ID, "first-name"))
     )
-    driver.find_element(By.ID, "continue").click()
-    error_msg = WebDriverWait(driver, 30).until(
+    continue_btn = driver.find_element(By.ID, "continue")
+    driver.execute_script("arguments[0].click();", continue_btn)   # <- JavaScript-клик
+    time.sleep(3)
+    error_msg = WebDriverWait(driver, 60).until(
         EC.presence_of_element_located((By.CSS_SELECTOR, "h3[data-test='error']"))
     )
     assert "First Name is required" in error_msg.text

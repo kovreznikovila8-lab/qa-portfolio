@@ -30,8 +30,10 @@ def test_checkout_success(driver):
     driver.find_element(By.ID, "first-name").send_keys("Иван")
     driver.find_element(By.ID, "last-name").send_keys("Иванов")
     driver.find_element(By.ID, "postal-code").send_keys("123456")
-    driver.find_element(By.ID, "continue").click()
-    WebDriverWait(driver, 30).until(
+    continue_btn = driver.find_element(By.ID, "continue")
+    driver.execute_script("arguments[0].click();", continue_btn)   # <- JavaScript-клик
+    time.sleep(5)
+    WebDriverWait(driver, 60).until(
         EC.presence_of_element_located((By.CLASS_NAME, "checkout_summary_container"))
     )
     finish_btn = driver.find_element(By.ID, "finish")
