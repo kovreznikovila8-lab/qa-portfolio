@@ -31,9 +31,11 @@ jobs:
           sudo apt-get install -y chromium-browser
           sudo apt-get install -y chromium-chromedriver
 
-      - name: Run tests with Allure
-        run: |
-          pytest automation/ --alluredir=allure-results
+      - name: Install Xvfb
+        run: sudo apt-get install -y xvfb
+
+      - name: Run tests with Xvfb
+        run: xvfb-run --auto-servernum pytest automation/ --alluredir=allure-results
         env:
           PYTHONPATH: ${{ github.workspace }}
 
@@ -53,5 +55,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./allure-report
-          destination_dir: ./allure-report   # папка внутри ветки gh-pages (можно оставить пустым)
-          publish_branch: gh-pages           # ветка для Pages
+          publish_branch: gh-pages
